@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="hi">
+  <head>
+    <meta charset="UTF-8" />
+    <title>HSSC CET Marks Upload</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      body {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        background: #f3f4f6;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        min-height: 100vh;
+      }
+      .card {
+        background: #ffffff;
+        margin: 24px;
+        padding: 24px 20px;
+        max-width: 480px;
+        width: 100%;
+        border-radius: 16px;
+        box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+      }
+      h1 {
+        font-size: 1.4rem;
+        margin: 0 0 8px;
+        text-align: center;
+      }
+      p.subtitle {
+        margin: 0 0 16px;
+        font-size: 0.9rem;
+        color: #6b7280;
+        text-align: center;
+      }
+      .info-box {
+        font-size: 0.8rem;
+        background: #eff6ff;
+        border-left: 4px solid #3b82f6;
+        padding: 8px 10px;
+        margin-bottom: 16px;
+        border-radius: 8px;
+        color: #1f2937;
+      }
+      label {
+        display: block;
+        font-size: 0.9rem;
+        font-weight: 600;
+        margin-bottom: 6px;
+      }
+      input[type="file"] {
+        width: 100%;
+        padding: 8px;
+        border-radius: 10px;
+        border: 1px solid #d1d5db;
+        font-size: 0.9rem;
+        background: #f9fafb;
+      }
+      button {
+        margin-top: 14px;
+        width: 100%;
+        padding: 10px 14px;
+        font-size: 0.95rem;
+        font-weight: 600;
+        border-radius: 999px;
+        border: none;
+        cursor: pointer;
+        background: #2563eb;
+        color: white;
+      }
+      button:hover {
+        background: #1d4ed8;
+      }
+      .msg {
+        margin-bottom: 12px;
+        padding: 10px 12px;
+        font-size: 0.85rem;
+        border-radius: 10px;
+      }
+      .msg.success {
+        background: #ecfdf3;
+        border: 1px solid #22c55e;
+        color: #166534;
+      }
+      .msg.error {
+        background: #fef2f2;
+        border: 1px solid #ef4444;
+        color: #991b1b;
+      }
+      .footer {
+        margin-top: 10px;
+        text-align: center;
+        font-size: 0.75rem;
+        color: #9ca3af;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <h1>HSSC CET Marks Card Upload</h1>
+      <p class="subtitle">
+        सिर्फ HSSC CET Marks Card PDF अपलोड करें।
+      </p>
+
+      <? if (message) { ?>
+        <div class="msg <?= success ? 'success' : 'error' ?>">
+          <?= message ?>
+        </div>
+      <? } ?>
+
+      <div class="info-box">
+        • PDF में ये details भरी होनी चाहिए (blank नहीं):<br />
+        <b>Registration Number, Roll Number, Candidate Name, Father Name, Mother Name,
+        Date of Birth, Gender, Category, Mobile No, Date of Exam, Sub Category,
+        Shift of Exam, CET MARKS</b><br /><br />
+        • Upload के बाद डेटा अपने आप Google Sheet में rank-wise सेव हो जाएगा।
+      </div>
+
+      <form method="post" enctype="multipart/form-data">
+        <label for="marksPdf">HSSC CET Marks Card PDF चुनें:</label>
+        <input
+          type="file"
+          id="marksPdf"
+          name="marksPdf"
+          accept="application/pdf"
+          required
+        />
+
+        <button type="submit">Upload &amp; Save</button>
+      </form>
+
+      <div class="footer">
+        केवल एडमिन शीट को देख सकता है (Google Sheet शेयरिंग सेटिंग्स से control करें)
+      </div>
+    </div>
+  </body>
+</html>
