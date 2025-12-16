@@ -1,6 +1,11 @@
+[build]
+  publish = "."
+  command = ""
+
 [[redirects]]
   from = "/*"
   to = "https://cetranker.com/:splat"
   status = 301
   force = true
+
 # redeploy
